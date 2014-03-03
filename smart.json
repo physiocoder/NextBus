@@ -1,0 +1,9 @@
+{
+  "packages": {
+    "bootstrap-3": {},
+    "iron-router": {},
+    "node-csv-npm": {},
+    "momentjs": {},
+    "fontawesome4": {}
+  }
+}

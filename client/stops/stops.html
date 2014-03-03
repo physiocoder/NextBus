@@ -1,0 +1,51 @@
+<template name="StopList">
+
+	<div class="list-group">
+		{{#each stops}}
+		<a href="#" class="list-group-item" data-stop-id="{{stopId}}">
+			<h4 class="list-group-item-heading">{{stopName}}</h4>
+			<p class="list-group-item-text">{{stopDesc}}</p>
+		</a>
+		{{/each}}
+	</div>
+
+</template>
+
+<template name="StopDetail">
+	<div class="page-header">
+		<h1>{{stop.stopName}}</h1>
+		{{> Times}}
+	</div>
+</template>
+
+<template name="Times">
+<input type="hidden" value="{{clock}}" />
+<div class="list-group">
+		{{#each nextArrivals}}
+			{{#if isNext arrivalTime}}
+			<a id="target" href="#" class="list-group-item active" data-stop-id="{{stopId}}">
+				<h4 class="list-group-item-heading">
+					<span style="background-color:#{{routeColor}};color:#{{routeTextColor}}">{{routeShortName}}</span> <span class="glyphicon glyphicon-arrow-right"></span> {{headsign}}
+				</h4>
+				<p class="list-group-item-text">
+					{{prettyDate arrivalTime}}
+					
+					
+				</p>
+			</a>
+			{{else}}
+			<a href="#" class="list-group-item" data-stop-id="{{stopId}}">
+				<h4 class="list-group-item-heading">
+					<span style="background-color:#{{routeColor}};color:#{{routeTextColor}}">{{routeShortName}}</span> <span class="glyphicon glyphicon-arrow-right"></span> {{headsign}}
+				</h4>
+				<p class="list-group-item-text">
+					
+					{{arrivalTime}}
+					
+
+				</p>
+			</a>
+			{{/if}}
+		{{/each}}
+	</div>
+</template>
