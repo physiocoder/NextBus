@@ -4,3 +4,5 @@ Trips = new Meteor.Collection('trips');
 Routes = new Meteor.Collection('routes');
 
 TimeTables = new Meteor.Collection('timetable');
+
+StopsByTrip = new Meteor.Collection('stops_by_trip');

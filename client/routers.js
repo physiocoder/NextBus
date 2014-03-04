@@ -45,4 +45,17 @@ Router.map(function() {
 			}	
 		}});
 
+	this.route('TripDetail', {path: '/trips/:tripId',
+		layoutTemplate: 'layout',
+		before: function(){
+			this.subscribe("stops_by_trip", this.params.tripId).wait();
+		},
+		data:function(){
+			if ( this.ready() ) {
+				return {
+					trip: StopsByTrip.findOne({ tripId:this.params.tripId})
+				}
+			}	
+		}});	
+
 });

@@ -106,6 +106,7 @@ Meteor.startup( function() {
 		    		route = collections['routes'].findOne({'routeId':trip.routeId});
 
 		    	self.added("timetable", time.tripId, _.extend(route, {
+		    			tripId: time.tripId,
 	    				headsign:trip.tripHeadsign,
 	    				arrivalTime: arrivalTime
 	    			}));   
@@ -117,6 +118,34 @@ Meteor.startup( function() {
 			
 		}
 	);
+
+	Meteor.publish(
+		'stops_by_trip', function( tripId ){
+			var item = undefined,
+			    trip = collections['trips'].findOne({'tripId':tripId}),
+		    	route = collections['routes'].findOne({'routeId':trip.routeId}),
+				stopTimes = collections['stop_times']
+								.find({'tripId': tripId}, {sort:[ ["stop_sequence", "asc"] ]})
+								.fetch();
+
+			item = _.extend( trip, route);
+			item.stops = [];
+
+			_.each( stopTimes, function(stopTime){
+				var stop = collections['stops'].findOne({'stopId': stopTime.stopId});
+
+ 				item.stops.push( _.extend( stopTime, stop ) );
+
+
+			});
+
+			this.added("stops_by_trip", item.tripId, item);
+
+			this.ready();
+			
+		}
+	);
+
 
 });
 

@@ -6,7 +6,8 @@
       "iron-router": {},
       "node-csv-npm": {},
       "momentjs": {},
-      "fontawesome4": {}
+      "fontawesome4": {},
+      "leaflet": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -33,6 +34,11 @@
         "git": "https://github.com/chrismbeckett/meteor-fontawesome4.git",
         "tag": "v1.0.0",
         "commit": "fe38ec775e974f0f7855d1693dc74fd4f1b4848c"
+      },
+      "leaflet": {
+        "git": "https://github.com/bevanhunt/meteor-leaflet.git",
+        "tag": "v0.3.6",
+        "commit": "d9e3bdb824145c1078e52945909bb1cf38724da5"
       }
     }
   }

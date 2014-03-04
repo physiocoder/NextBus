@@ -1,0 +1,34 @@
+<template name="TripDetail">
+
+	{{#with trip}}
+    <div class="page-header">
+		<h1><span style="background-color:#{{routeColor}};color:#{{routeTextColor}}">{{routeShortName}}</span> <span class="glyphicon glyphicon-arrow-right"></span> {{tripHeadsign}}</h1>
+	</div>
+	<p class="lead">{{routeLongName}}</p>
+	{{/with}}
+
+	<div id="map"></div>
+
+	{{#with trip}}
+	<p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Stop Name</th>
+					<th>Arrival Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each stops}}
+					{{#with this}}
+					<tr>
+						<td><a href="/stops/{{stopId}}">{{stopName}}</a></td>
+						<td>{{arrivalTime}}</td>
+					</tr>
+					{{/with}}
+				{{/each}}
+			</tbody>
+		</table>
+	</p>
+	{{/with}}
+</template>

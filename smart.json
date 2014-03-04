@@ -4,6 +4,7 @@
     "iron-router": {},
     "node-csv-npm": {},
     "momentjs": {},
-    "fontawesome4": {}
+    "fontawesome4": {},
+    "leaflet": {}
   }
 }
